@@ -30,9 +30,9 @@ body {
 }
 
 .hover-white:hover {
-  color: #ffffff !important; /* Pure white on hover */
-  transform: translateY(-2px); /* Halksa upar move hoga */
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.4); /* Glow effect */
+  color: #ffffff !important; 
+  transform: translateY(-2px); 
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.4); 
 }
 
 /* Auron style bottom line animation */
@@ -49,7 +49,7 @@ body {
 }
 
 .hover-white:hover::after {
-  width: 100%; /* Line left to right slide hogi */
+  width: 100%; 
 }
 /* Navbar perfect glass effect */
 .glass-nav {
