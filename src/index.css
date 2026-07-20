@@ -35,6 +35,7 @@ body {
 .hover-white:hover {
   color: #ffffff !important; 
   transform: translateY(-2px); 
+  cursor: pointer;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.4); 
 }
 
@@ -48,6 +49,7 @@ body {
   background-color: var(--accent);
   transition: width 0.3s ease;
   box-shadow: 0 0 8px var(--accent);
+  cursor: pointer;
 }
 
 .hover-white:hover::after {
