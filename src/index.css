@@ -1,0 +1,116 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+
+:root {
+  --bg-deep: #020617;
+  --accent: #a5f3fc;
+}
+
+body {
+  background-color: var(--bg-deep);
+  /* Background Image add ki hai yahan */
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(2, 6, 23, 0.5), var(--bg-deep)),
+    url('https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=2000&auto=format&fit=crop'); 
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+/* Navbar Items Hover Effect */
+.hover-white {
+  color: #94a3b8; /* Default color (secondary) */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  display: inline-block;
+}
+
+.hover-white:hover {
+  color: #ffffff !important; /* Pure white on hover */
+  transform: translateY(-2px); /* Halksa upar move hoga */
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.4); /* Glow effect */
+}
+
+/* Auron style bottom line animation */
+.hover-white::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1.5px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--accent); /* Cyan color line */
+  transition: width 0.3s ease;
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.hover-white:hover::after {
+  width: 100%; /* Line left to right slide hogi */
+}
+/* Navbar perfect glass effect */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  width: 92%;
+  max-width: 1100px;
+}
+
+/* Mobile Menu Fullscreen Overlay (No Gaps) */
+.mobile-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(2, 6, 23, 0.98);
+  backdrop-filter: blur(15px);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Perfect Circle Icon Fix */
+.icon-circle {
+  width: 55px; height: 55px;
+  min-width: 55px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.icon-circle:hover, .icon-circle.active {
+  background: var(--accent);
+  color: black;
+  border-color: var(--accent);
+  box-shadow: 0 0 20px var(--accent);
+  transform: translateY(-5px);
+}
+
+.hero-title {
+  background: linear-gradient(180deg, #FFFFFF 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+/* Slider Fade Effect */
+.slider-container {
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  overflow: hidden;
+  padding: 40px 0;
+}
