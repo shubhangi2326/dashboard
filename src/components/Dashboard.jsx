@@ -12,7 +12,6 @@ const Dashboard = () => {
   const menuItems = ["Home", "Capabilities", "AI Engine", "Research", "Pricing"];
   const icons = [Monitor, Percent, Rocket, CreditCard, Cpu, Lightbulb, Lock, Search, Shield, Sparkles];
 
-  // Animation Settings
   const fadeInUp = {
     initial: { y: 30, opacity: 0 },
     animate: { y: 0, opacity: 1, transition: { duration: 0.8 } }
@@ -21,7 +20,7 @@ const Dashboard = () => {
   return (
     <div className="container-fluid min-vh-100 d-flex flex-column p-0">
       
-      {/* 1. FULLSCREEN MOBILE MENU */}
+      {/* 1. Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
@@ -30,14 +29,14 @@ const Dashboard = () => {
             exit={{ opacity: 0, scale: 1.1 }}
             className="mobile-overlay"
           >
-            <X size={40} className="position-absolute top-0 end-0 m-4" onClick={() => setIsMenuOpen(false)} />
+            <X size={40} className="position-absolute top-0 end-0 m-4 cursor-pointer" onClick={() => setIsMenuOpen(false)} />
             {menuItems.map((item, i) => (
               <motion.h1 
                 key={i} 
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: i * 0.1 }}
-                className="display-4 fw-bold text-white"
+                className="display-4 fw-bold text-white cursor-pointer"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item}
@@ -47,33 +46,40 @@ const Dashboard = () => {
         )}
       </AnimatePresence>
 
-      {/* 2. PREMIUM NAVBAR (Auron Layout) */}
+      {/* 2. Navbar */}
       <motion.nav 
         initial={{ y: -100 }} animate={{ y: 0 }}
         className="glass-nav mx-auto mt-4 px-4 py-2 d-flex align-items-center justify-content-between fixed-top shadow-lg"
         style={{ zIndex: 1000 }}
       >
         <div className="d-flex align-items-center gap-2 fw-bold text-white fs-5">
-          <div className="bg-white rounded-1 p-1"><div className="bg-dark rounded-circle" style={{width:6, height:6}}></div></div>
+          <div className="bg-white rounded-1 p-1">
+            <div className="bg-dark rounded-circle" style={{width:6, height:6}}></div>
+          </div>
           AURON
         </div>
 
-        {/* Desktop Menu */}
         <div className="d-none d-lg-flex gap-4 small fw-medium text-secondary">
           {menuItems.map(item => (
-            <span key={item} className="hover-white cursor-pointer" style={{cursor:'pointer'}}>{item}</span>
+            <span key={item} className="hover-white cursor-pointer">{item}</span>
           ))}
         </div>
 
         <div className="d-flex align-items-center gap-3">
-          <button className="btn btn-link text-white d-none d-sm-block text-decoration-none small">Login</button>
-          <button className="btn btn-light rounded-pill px-4 fw-bold btn-sm shadow-sm" style={{background: '#a5f3fc'}}>Free trial</button>
-          {/* Mobile Toggle */}
-          <Menu className="d-lg-none" size={28} onClick={() => setIsMenuOpen(true)} />
+          <button className="btn btn-link btn-login d-none d-sm-block text-decoration-none small">Login</button>
+          <motion.button 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="btn btn-light rounded-pill px-4 fw-bold btn-sm shadow-sm" 
+            style={{background: '#a5f3fc'}}
+          >
+            Free trial
+          </motion.button>
+          <Menu className="d-lg-none menu-icon-trigger" size={28} onClick={() => setIsMenuOpen(true)} />
         </div>
       </motion.nav>
 
-      {/* 3. HERO SECTION */}
+      {/* 3. Hero Section */}
       <main className="flex-grow-1 d-flex flex-column align-items-center justify-content-center text-center px-4 pt-5 mt-5">
         <motion.div 
           variants={fadeInUp} initial="initial" animate="animate"
@@ -97,17 +103,15 @@ const Dashboard = () => {
           Streamline your business with our intuitive, <br className="d-none d-md-block" /> scalable AI platform.
         </motion.p>
 
-        <motion.button 
-          whileHover={{ scale: 1.05 }}
-          className="btn btn-lg rounded-pill px-5 py-3 fw-bold d-flex align-items-center gap-3 shadow-lg"
-          style={{background: '#a5f3fc', border: 'none'}}
-        >
-          <div className="bg-black rounded-circle p-1"><Plus size={16} className="text-white" /></div>
-          Start free trial
-        </motion.button>
+        <button className="btn btn-premium-hero shadow-lg">
+          <div className="inner-circle-plus">
+            <Plus size={16} className="text-white" />
+          </div>
+          <span>Start free trial</span>
+        </button>
       </main>
 
-      {/* 4. INFINITE SLIDER (Perfect Circle Fix) */}
+      {/* 4. Icon Slider */}
       <div className="slider-container mb-5 mt-4">
         <motion.div 
           className="d-flex gap-5"
